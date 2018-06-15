@@ -13,10 +13,10 @@ docs:
   - title: Categories
     children:
       - title: "Quick-Start Guide"
-        url: /docs/quick-start-guide/
+        url: /category/jekyll
       - title: "Structure"
-        url: /docs/structure/
+        url: /category/jekyll
       - title: "Installation"
-        url: /docs/installation/
+        url: /category/jekyll
       - title: "Upgrading"
-        url: /docs/upgrading/
+        url: /category/jekyll
