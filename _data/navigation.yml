@@ -8,15 +8,3 @@
 #   url: /collection-archive/
 # - title: "Sitemap"
 #   url: /sitemap/
-
-docs:
-  - title: Categories
-    children:
-      - title: "Quick-Start Guide"
-        url: /category/jekyll
-      - title: "Structure"
-        url: /category/jekyll
-      - title: "Installation"
-        url: /category/jekyll
-      - title: "Upgrading"
-        url: /category/jekyll
