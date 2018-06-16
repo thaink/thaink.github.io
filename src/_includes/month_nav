@@ -7,7 +7,7 @@
           {% for yearMonth in postsByYearMonth %}
             <li class="site-month-item">
               <span class="site-month-text">
-                <a href="/month/{{ yearMonth.name | | replace: " ", "-" }}/">
+                <a href="/{{ yearMonth.name | date: '%Y/%m' | replace: " ", "-" }}/">
                 {{ yearMonth.name }}
                 </a>
               </span>
