@@ -1,6 +1,7 @@
 #ignore all in root folder except
 /*
 !build_Site.sh
+!clean.sh
 !src/
 !.gitignore
 !_config.yml
