@@ -1,14 +1,21 @@
-*.gem
-*.sublime-project
-*.sublime-workspace
-.bundle
-.DS_Store
-.jekyll-metadata
-.sass-cache
-_asset_bundler_cache
-_site
-codekit-config.json
-example/_site
-Gemfile.lock
-node_modules
-npm-debug.log*
+#ignore all in root folder except
+*
+!build_Site.sh
+!src
+!.gitignore
+!_config.yml
+
+#in src, ignore temporary file
+src/*.gem
+src/*.sublime-project
+src/*.sublime-workspace
+src/.bundle
+src/.DS_Store
+src/.jekyll-metadata
+src/.sass-cache
+src/_asset_bundler_cache
+src/_site
+src/codekit-config.json
+src/Gemfile.lock
+src/node_modules
+src/npm-debug.log*
