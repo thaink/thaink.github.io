@@ -1,0 +1,20 @@
+<nav class="nav__list">
+  <ul class="nav__items">
+      <li>
+          <span class="nav__sub-title">Tags</span>
+        <ul>
+          {% assign tags = site.tags | sort %}
+            {% for tag in tags %}
+            <li class="site-tag-item">
+              <span class="site-tag-text btn btn-tag">
+                <a href="/tag/{{ tag | first | slugify | downcase }}/"
+                style="font-size: {{ tag | last | size  |  times: 4 | plus: 80  }}%">
+                {{ tag[0] | replace:'-', ' ' }} ({{ tag | last | size }})
+                </a>
+              </span>
+            </li>
+            {% endfor %}
+        </ul>
+      </li>
+  </ul>
+</nav>
