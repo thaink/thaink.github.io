@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>https://thaink.github.io/2018/06/welcome-to-jekyll/</loc>
+<lastmod>2018-06-14T21:02:06+09:00</lastmod>
+</url>
+<url>
+<loc>https://thaink.github.io/2018/06/welcome-to-my-blog/</loc>
+<lastmod>2018-06-14T21:02:06+09:00</lastmod>
+</url>
+<url>
+<loc>https://thaink.github.io/categories-archive/</loc>
+</url>
+<url>
+<loc>https://thaink.github.io/</loc>
+</url>
+<url>
+<loc>https://thaink.github.io/tags-archive/</loc>
+</url>
+<url>
+<loc>https://thaink.github.io/categories-archive/jekyll/</loc>
+</url>
+<url>
+<loc>https://thaink.github.io/categories-archive/update/</loc>
+</url>
+<url>
+<loc>https://thaink.github.io/categories-archive/unexpected-love/</loc>
+</url>
+<url>
+<loc>https://thaink.github.io/2018/06/</loc>
+</url>
+</urlset>
