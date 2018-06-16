@@ -1,13 +1,16 @@
 ---
-layout: default
+layout: archive
+author_profile: true
 ---
-<div class="category-archive">
-  <div>
-    <span class="title">Category archive for {{ page.category }}</span>
-  </div>
-  <div>
-    <ul>
-{{ content }}
-    </ul>
-  </div>
+
+<div class="entries-{{ page.entries_layout }}">
+  <section id="{{ page.category | slugify | downcase }}" class="taxonomy__section">
+    <h2 class="archive__subtitle">{{ category[0] }}</h2>
+    <div class="entries-{{ page.entries_layout | default: 'list' }}">
+      {% for post in site.categories[page.category] %}
+        {% include archive-single.html type=page.entries_layout %}
+      {% endfor %}
+    </div>
+    <a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
+  </section>
 </div>
