@@ -77,12 +77,12 @@ module Jekyll
     def initialize(site, dir, category, posts)
       @site = site
       @dir = dir
-      @category = category.tr(" ", "-")
+      @category = category
 
       if site.config['category_archive'] && site.config['category_archive']['slugify']
-        @category_dir_name = Utils.slugify(@category) # require sanitize here
+        @category_dir_name = Utils.slugify(@category).tr(" ", "-") # require sanitize here
       else 
-        @category_dir_name = @category
+        @category_dir_name = @category.tr(" ", "-")
       end
 
       @layout =  site.config['category_archive'] && site.config['category_archive']['layout'] || 'category_archive'

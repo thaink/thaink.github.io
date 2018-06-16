@@ -1,8 +1,8 @@
 #!/bin/sh
-./clean.sh
+git checkout HEAD src/
 cd src
 bundle exec jekyll build --destination ../_site
 
 cd ..
-mv _site/* .
+rsync -av _site/* .
 rm -r _site

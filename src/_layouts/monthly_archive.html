@@ -1,13 +1,22 @@
 ---
-layout: default
+layout: archive
+author_profile: true
 ---
-<div class="monthly-archive">
-  <div>
-    <span class="title">Monthly archive for {{page.year}}/{{page.month}}</span>
-  </div>
-  <div>
-    <ul>
-{{ content }}
-    </ul>
-  </div>
+
+<div class="entries-{{ page.entries_layout }}">
+  <section id="{{ page.category | slugify | downcase }}" class="taxonomy__section">
+    <div class="entries-{{ page.entries_layout | default: 'list' }}">
+      {% assign postsByYearMonth = site.posts | group_by_exp:"post", "post.date | date: '%Y %b'"  %}
+      {% for yearMonth in postsByYearMonth %}
+        {% assign myear  = yearMonth.name | date: '%Y' %}
+        {% assign mmonth = yearMonth.name | date: '%m' %}
+        {% if myear contains page.year and mmonth contains page.month %}
+          {% for post in yearMonth.items %}
+            {% include archive-single.html type=page.entries_layout %}
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    <a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
+  </section>
 </div>
