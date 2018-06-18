@@ -4,8 +4,6 @@
 !clean.sh
 !src/
 !.gitignore
-!_config.yml
-!.nojekyll
 
 #in src, ignore temporary file
 src/*.gem
