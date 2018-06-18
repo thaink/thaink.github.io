@@ -1,11 +1,6 @@
-#ignore all in root folder except
-/*
-!build_Site.sh
-!clean.sh
-!src/
-!.gitignore
-
-#in src, ignore temporary file
+#ignore temporary file
+_site
+.sass-cache
 src/*.gem
 src/*.sublime-project
 src/*.sublime-workspace
