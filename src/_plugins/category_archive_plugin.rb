@@ -82,7 +82,7 @@ module Jekyll
       if site.config['category_archive'] && site.config['category_archive']['slugify']
         @category_dir_name = Utils.slugify(@category).tr(" ", "-") # require sanitize here
       else 
-        @category_dir_name = @category.tr(" ", "-")
+        @category_dir_name = @category.downcase.tr(" ", "-")
       end
 
       @layout =  site.config['category_archive'] && site.config['category_archive']['layout'] || 'category_archive'

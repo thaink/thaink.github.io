@@ -82,7 +82,7 @@ module Jekyll
       if site.config['tag_archive'] && site.config['tag_archive']['slugify']
         @tag_dir_name = Utils.slugify(@tag).tr(" ", "-") # require sanitize here
       else 
-        @tag_dir_name = @tag.tr(" ", "-")
+        @tag_dir_name = @tag.downcase.tr(" ", "-")
       end
 
       @layout =  site.config['tag_archive'] && site.config['tag_archive']['layout'] || 'tag_archive'
