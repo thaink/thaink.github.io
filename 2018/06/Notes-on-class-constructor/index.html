@@ -1,0 +1,688 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.11.2 by Michael Rose
+  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Notes on C++ class constructor and destructor - Coding&amp;Hobbies</title>
+<meta name="description" content="In this posts, I will list some notes that I think they worth to be reminded when mentioning about classes’ declaration, constructor, and destructor.">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Coding&Hobbies">
+<meta property="og:title" content="Notes on C++ class constructor and destructor">
+<meta property="og:url" content="https://thaink.github.io/2018/06/Notes-on-class-constructor/">
+
+
+  <meta property="og:description" content="In this posts, I will list some notes that I think they worth to be reminded when mentioning about classes’ declaration, constructor, and destructor.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2018-06-20T16:02:06+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://thaink.github.io/2018/06/Notes-on-class-constructor/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Thai Nguyen",
+      "url": "https://thaink.github.io",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Coding&Hobbies Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/">Coding&Hobbies</a>
+        <ul class="visible-links">
+          
+        </ul>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Thai K. Nguyen</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        Software Engineer. Interested in high-performance, classic and elegant coding. I am a minimalist and techno-optimist.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Seoul, KR</span>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/thaink" itemprop="sameAs">
+            <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://instagram.com/khthainguyen" itemprop="sameAs">
+            <i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/thaink" itemprop="sameAs">
+            <i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  <nav class="nav__list">
+  <ul class="nav__items">
+      <li>
+          <span class="nav__sub-title">Categories</span>
+        <ul>
+          
+          
+            <li class="site-month-item">
+              <span class="site-month-text">
+                <a href="/categories-archive/c++/">
+                C++
+                </a>
+              </span>
+            </li>
+          
+            <li class="site-month-item">
+              <span class="site-month-text">
+                <a href="/categories-archive/tips-and-tricks/">
+                Tips and tricks
+                </a>
+              </span>
+            </li>
+          
+        </ul>
+      </li>
+  </ul>
+</nav>
+
+
+  <nav class="nav__list">
+  <ul class="nav__items">
+      <li>
+          <span class="nav__sub-title">Archive</span>
+        <ul>
+          
+          
+            <li class="site-month-item">
+              <span class="site-month-text">
+                <a href="/2018/06/">
+                2018 Jun
+                </a>
+              </span>
+            </li>
+          
+        </ul>
+      </li>
+  </ul>
+</nav>
+
+
+  <nav class="nav__list">
+  <ul class="nav__items">
+      <li>
+          <span class="nav__sub-title">Tags</span>
+        <ul>
+          
+            
+            <li class="site-tag-item">
+              <span class="site-tag-text btn btn-tag">
+                <a href="/tags-archive/c/"
+                style="font-size: 84%">
+                C++ (1)
+                </a>
+              </span>
+            </li>
+            
+            <li class="site-tag-item">
+              <span class="site-tag-text btn btn-tag">
+                <a href="/tags-archive/github/"
+                style="font-size: 84%">
+                github (1)
+                </a>
+              </span>
+            </li>
+            
+            <li class="site-tag-item">
+              <span class="site-tag-text btn btn-tag">
+                <a href="/tags-archive/initialization/"
+                style="font-size: 84%">
+                initialization (1)
+                </a>
+              </span>
+            </li>
+            
+            <li class="site-tag-item">
+              <span class="site-tag-text btn btn-tag">
+                <a href="/tags-archive/jekyll/"
+                style="font-size: 84%">
+                jekyll (1)
+                </a>
+              </span>
+            </li>
+            
+            <li class="site-tag-item">
+              <span class="site-tag-text btn btn-tag">
+                <a href="/tags-archive/website/"
+                style="font-size: 84%">
+                website (1)
+                </a>
+              </span>
+            </li>
+            
+        </ul>
+      </li>
+  </ul>
+</nav>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Notes on C++ class constructor and destructor">
+    <meta itemprop="description" content="In this posts, I will list some notes that I think they worth to be reminded when mentioning about classes’ declaration, constructor, and destructor.">
+    <meta itemprop="datePublished" content="June 20, 2018">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Notes on C++ class constructor and destructor
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>In this posts, I will list some notes that I think they worth to be reminded when mentioning about classes’ declaration, constructor, and destructor.</p>
+
+<h5 id="1-in-class-member-function-is-inline-function">1. In-class member function is inline function</h5>
+<p>If you define a method member inside the class declaration such as</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">People</span> <span class="p">{</span>
+	<span class="n">string</span> <span class="n">first_name</span><span class="p">()</span> <span class="p">{</span><span class="k">return</span> <span class="n">_fname</span><span class="p">;}</span>
+    <span class="n">string</span> <span class="n">last_name</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="n">string</span> <span class="n">People</span><span class="o">::</span><span class="n">last_name</span> <span class="p">{</span><span class="k">return</span> <span class="n">_lname</span><span class="p">;}</span>
+</code></pre></div></div>
+<p>Then <code class="highlighter-rouge">first_name()</code> function will be an inline function by default while the function <code class="highlighter-rouge">last_name()</code> is not. Remember the good and the bad of an inline function. On the good side, an inline function can remove the overhead of the function calling mechanism, thus, improves the performance. However, it also increases the code size, leads to increasing the percentage of the cache miss and reduce the performance as well. Therefore, <strong>only define a function inside its class definition if the function is small.</strong></p>
+
+<h5 id="2-define-constructors-that-can-take-a-single-argument-as-explicit">2. Define constructors that can take a single argument as explicit</h5>
+<p>By default, a constructor invoked by a single argument acts as an implicit conversion from its argument type to its type. Implicit is usually found in copy assignment and function call.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">my_fnc</span><span class="p">(</span><span class="n">Date</span><span class="p">);</span>
+
+<span class="k">class</span> <span class="nc">Date</span> <span class="p">{</span>
+	<span class="n">Date</span> <span class="p">(</span><span class="kt">int</span> <span class="n">dd</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">f</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">my_fnc</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span> <span class="c1">//OK.implicit</span>
+    <span class="n">my_fnc</span><span class="p">(</span><span class="n">Date</span><span class="p">(</span><span class="mi">4</span><span class="p">));</span><span class="c1">//OK.explicit</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>In this case, 4 will be implicitly converted to Date and used in my_fnc. This may be the behavior you expect. Therefore, <strong>declare a constructor that can be called with a single argument explicit.</strong></p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Date</span> <span class="p">{</span>
+	<span class="k">explicit</span> <span class="n">Date</span> <span class="p">(</span><span class="kt">int</span> <span class="n">dd</span> <span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">mm</span> <span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">yy</span> <span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h5 id="3-default-arguments-or-in-class-initializercan-save-your-time">3. Default arguments or in-class initializercan save your time</h5>
+<p>If you want to set default values for your data members, ease the pain of defining many constructors each with a different number of arguments, there are two ways to do that:</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//1. Set default argument for the constructor</span>
+<span class="k">class</span> <span class="nc">Date</span> <span class="p">{</span>
+	<span class="n">Date</span> <span class="p">(</span><span class="kt">int</span> <span class="n">dd</span> <span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">mm</span> <span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">yy</span> <span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">//2. In-class initializer</span>
+<span class="k">class</span> <span class="nc">Date</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="n">dd</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">mm</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">yy</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+	<span class="n">Date</span> <span class="p">(</span><span class="kt">int</span> <span class="n">d</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h5 id="4-prefer-member-initialization-over-assignment-in-a-constructor">4. Prefer member initialization over assignment in a constructor</h5>
+<p>Data member of a class can be initialized by:</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Initialization</span>
+<span class="k">class</span> <span class="nc">Date</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="n">dd</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">yy</span><span class="p">;</span>
+    <span class="n">A</span> <span class="n">aa</span><span class="p">;</span>
+	<span class="n">Date</span> <span class="p">(</span><span class="kt">int</span> <span class="n">d</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">a</span><span class="p">)</span>
+    <span class="o">:</span> <span class="n">dd</span><span class="p">{</span><span class="n">d</span><span class="p">},</span> <span class="n">mm</span><span class="p">{</span><span class="n">m</span><span class="p">},</span> <span class="n">yy</span> <span class="p">{</span><span class="n">y</span><span class="p">},</span> <span class="n">aa</span><span class="p">{</span><span class="n">a</span><span class="p">}</span> <span class="p">{}</span>
+<span class="p">}</span>
+<span class="c1">//Assignment</span>
+<span class="k">class</span> <span class="nc">Date</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="n">dd</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">yy</span><span class="p">;</span>
+    <span class="n">A</span> <span class="n">aa</span><span class="p">;</span>
+	<span class="n">Date</span> <span class="p">(</span><span class="kt">int</span> <span class="n">d</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+    	<span class="n">dd</span> <span class="o">=</span> <span class="n">d</span><span class="p">;</span> <span class="n">mm</span> <span class="o">=</span> <span class="n">m</span><span class="p">;</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+        <span class="n">aa</span> <span class="o">=</span> <span class="n">A</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>They look the same, but there are reasons you should prefer the initialization over the assignment.</p>
+<ul>
+  <li>If your data member is const. You have to use initialization since you cannot assign a value to a const variable.</li>
+  <li>If your data member is of a class does not have a default constructor. The first method is the only way to go.</li>
+  <li>Reference data member. If your data member is a reference. You cannot define it then assign a value to it later. So, the first method is the only one will work.</li>
+  <li>If you inherit a Base class, it can make sure the Base class is properly initialized before your class. Otherwise, your base class will be initialized by the default constructor.</li>
+  <li>Performance boost. In the assignment method, if your member is a class, it actually is initialized by the default constructor first. Then you assign another value to it. This, of course, does excessive works.</li>
+</ul>
+
+<h5 id="5-if-a-method-does-not-need-to-modify-data-declare-it-as-const-function">5. If a method does not need to modify data, declare it as const function</h5>
+<p>A const function cannot modify any data in the class, so this is a basic rule to ensure your method does not do anything unexpected. It is important if you work in a large team.</p>
+<h5 id="6-if-a-class-has-a-virtual-function-it-needs-a-virtual-destructor">6. If a class has a virtual function, it needs a virtual destructor</h5>
+<p>This code ensures the case when a Derived class object is referred by a pointer of its Base class, if you want to delete the object, it actually calls the destructor of the Derived class. Without the virtual declaration, only the destructor of Base class could be called and it may leak the resources.</p>
+
+<h5 id="7-if-you-have-an-initializer-list-constructor-remember-when-it-will-be-called">7. If you have an initializer-List Constructor, remember when it will be called</h5>
+<p>If you define a container, you should have a constructor that accepts <code class="highlighter-rouge">initializer_list</code>. That way you can initialize your class with a list of value just like a vector:</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="c1">//vector with one 3 zero elements</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">();</span> <span class="c1">// empty vector</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{};</span> <span class="c1">// empty vector</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span><span class="mi">3</span><span class="p">};</span><span class="c1">//initializer-list called. vector with one element</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">};</span><span class="c1">//initializer-list called. vector with 3 elements 3, 4 and 5</span>
+</code></pre></div></div>
+<p>However, if you have one, make sure you remember when it will be called:</p>
+<ul>
+  <li>If either a default constructor (no argument) or an initializer-list constructor could be invoked, prefer the default constructor.</li>
+  <li>If both an initializer-list constructor and an ‘ordinary constructor’ could be invoked, prefer the initializer-list constructor. This rule is necessary to avoid different resolutions based on different numbers of elements.</li>
+</ul>
+
+<h5 id="8-remember-to-copy-the-bases-when-defining-copymove-constructorassignment">8. Remember to copy the Bases when defining copy/move constructor/assignment</h5>
+<p>In these cases, consider the base class as a member of your class, remember to initialize it. Otherwise, it will be initialized by the default constructor.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//B1 and B2 is base classes of D</span>
+<span class="n">D</span><span class="p">(</span><span class="k">const</span> <span class="n">D</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">)</span> <span class="o">:</span><span class="n">B1</span><span class="p">{</span><span class="n">a</span><span class="p">},</span> <span class="n">B2</span><span class="p">{</span><span class="n">a</span><span class="p">},</span> <span class="n">m1</span><span class="p">{</span><span class="n">a</span><span class="p">.</span><span class="n">m1</span><span class="p">},</span> <span class="n">m2</span><span class="p">{</span><span class="n">a</span><span class="p">.</span><span class="n">m2</span><span class="p">}</span> <span class="p">{}</span>
+</code></pre></div></div>
+<h5 id="9-consider-before-you-make-a-default-constructor-for-your-class">9. Consider before you make a default constructor for your class</h5>
+<p>The default constructor is necessary in many cases, such as, when objects of your class will be used as elements of a container… But not every time, defining a default constructor is a good idea. If a class inherit your class, users of your class may forget to properly initialize it as the case above.</p>
+
+<h5 id="10-remember-when-you-have-default-operations">10. Remember when you have default operations</h5>
+<p>Default operations include constructor, destructor, copy and move assignment can be autogenerated for your class. The suppression of these operations will happen when:</p>
+<ul>
+  <li>If the programmer declares any constructor for a class, the default constructor is not generated for that class.</li>
+  <li>If the programmer declares a copy operation, a move operation, or a destructor for a class, no copy operation, move operation, or destructor is generated for that class.</li>
+</ul>
+
+<p>Otherwise, you can control the suppression behavior by:</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+	<span class="c1">//Suppress the default behavior</span>
+    <span class="n">A</span><span class="p">()</span><span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+	<span class="c1">//Explicit default</span>
+    <span class="n">A</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span><span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>By default, the default constructor is a member-wise constructor, it will call the default constructor of all data members. Therefore, it will fail if a data member doesn’t have its default constructor. The default copy operator is the shallow copy, so be careful if it is the behavior that you expect.</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags-archive/c" class="page__taxonomy-item" rel="tag">C++</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags-archive/initialization" class="page__taxonomy-item" rel="tag">initialization</a>
+    
+    </span>
+  </p>
+
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories-archive/c" class="page__taxonomy-item" rel="tag">C++</a>
+    
+    </span>
+  </p>
+
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-06-20T16:02:06+09:00">June 20, 2018</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Notes+on+C%2B%2B+class+constructor+and+destructor%20https%3A%2F%2Fthaink.github.io%2F2018%2F06%2FNotes-on-class-constructor%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fthaink.github.io%2F2018%2F06%2FNotes-on-class-constructor%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=https%3A%2F%2Fthaink.github.io%2F2018%2F06%2FNotes-on-class-constructor%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fthaink.github.io%2F2018%2F06%2FNotes-on-class-constructor%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/2018/06/custom-plugins-in-github-pages/" class="pagination--pager" title="Jekyll custom plugins in Github page
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2018/06/custom-plugins-in-github-pages/" rel="permalink">Jekyll custom plugins in Github page
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Github page, which uses Jekyll as it static site generator, is a very convenient way to host a personal website. However, Github only supports some official plugins they listed, to use other plugin...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="https://github.com/thaink"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Thai Nguyen. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+  </body>
+</html>

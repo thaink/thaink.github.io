@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Jekyll custom plugins in Github page - Coding&amp;Hobbies</title>
-<meta name="description" content="Github page, which uses Jekyll as it static site generator, is a very convinient way to host personal website. However, github only supports some official plugins they listed, to use other plugins, you have to build the site yourself. In this post, I would like to discuss about their difficulties and how to overcome them.ProblemsThe first problem is of course github does not support custom plugins and they have a valid point to do so - sercurity. Allowing arbitrary code to run on their server is somewhat vulnerable and they don’t want to do so. Hence, I do not expect them to change that anytime soon. However, some plugins is really helpful, in my case, I need plugins to generated category, month archive and tag archive file automatically instead of the painful official way to generate each of them manually as guided when you add any tag or category.">
+<meta name="description" content="Github page, which uses Jekyll as it static site generator, is a very convenient way to host a personal website. However, Github only supports some official plugins they listed, to use other plugins, you have to build the site yourself. In this post, I would like to discuss their difficulties and how to overcome them.ProblemsThe first problem is, of course, Github does not support custom plugins and they have a valid point to do so - security. Allowing arbitrary code to run on their server is somewhat vulnerable and they don’t want to do so. Hence, I do not expect them to change that anytime soon. However, some plugins are really helpful, in my case, I need plugins to generate category, month archive and tag archive file automatically instead of the painful official way to generate each of them manually as guided when you add any tag or category.">
 
 
 
@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://thaink.github.io/2018/06/custom-plugins-in-github-pages/">
 
 
-  <meta property="og:description" content="Github page, which uses Jekyll as it static site generator, is a very convinient way to host personal website. However, github only supports some official plugins they listed, to use other plugins, you have to build the site yourself. In this post, I would like to discuss about their difficulties and how to overcome them.ProblemsThe first problem is of course github does not support custom plugins and they have a valid point to do so - sercurity. Allowing arbitrary code to run on their server is somewhat vulnerable and they don’t want to do so. Hence, I do not expect them to change that anytime soon. However, some plugins is really helpful, in my case, I need plugins to generated category, month archive and tag archive file automatically instead of the painful official way to generate each of them manually as guided when you add any tag or category.">
+  <meta property="og:description" content="Github page, which uses Jekyll as it static site generator, is a very convenient way to host a personal website. However, Github only supports some official plugins they listed, to use other plugins, you have to build the site yourself. In this post, I would like to discuss their difficulties and how to overcome them.ProblemsThe first problem is, of course, Github does not support custom plugins and they have a valid point to do so - security. Allowing arbitrary code to run on their server is somewhat vulnerable and they don’t want to do so. Hence, I do not expect them to change that anytime soon. However, some plugins are really helpful, in my case, I need plugins to generate category, month archive and tag archive file automatically instead of the painful official way to generate each of them manually as guided when you add any tag or category.">
 
 
 
@@ -261,6 +261,14 @@
           
             <li class="site-month-item">
               <span class="site-month-text">
+                <a href="/categories-archive/c++/">
+                C++
+                </a>
+              </span>
+            </li>
+          
+            <li class="site-month-item">
+              <span class="site-month-text">
                 <a href="/categories-archive/tips-and-tricks/">
                 Tips and tricks
                 </a>
@@ -303,9 +311,27 @@
             
             <li class="site-tag-item">
               <span class="site-tag-text btn btn-tag">
+                <a href="/tags-archive/c/"
+                style="font-size: 84%">
+                C++ (1)
+                </a>
+              </span>
+            </li>
+            
+            <li class="site-tag-item">
+              <span class="site-tag-text btn btn-tag">
                 <a href="/tags-archive/github/"
                 style="font-size: 84%">
                 github (1)
+                </a>
+              </span>
+            </li>
+            
+            <li class="site-tag-item">
+              <span class="site-tag-text btn btn-tag">
+                <a href="/tags-archive/initialization/"
+                style="font-size: 84%">
+                initialization (1)
                 </a>
               </span>
             </li>
@@ -340,7 +366,7 @@
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Jekyll custom plugins in Github page">
-    <meta itemprop="description" content="Github page, which uses Jekyll as it static site generator, is a very convinient way to host personal website. However, github only supports some official plugins they listed, to use other plugins, you have to build the site yourself. In this post, I would like to discuss about their difficulties and how to overcome them.ProblemsThe first problem is of course github does not support custom plugins and they have a valid point to do so - sercurity. Allowing arbitrary code to run on their server is somewhat vulnerable and they don’t want to do so. Hence, I do not expect them to change that anytime soon. However, some plugins is really helpful, in my case, I need plugins to generated category, month archive and tag archive file automatically instead of the painful official way to generate each of them manually as guided when you add any tag or category.">
+    <meta itemprop="description" content="Github page, which uses Jekyll as it static site generator, is a very convenient way to host a personal website. However, Github only supports some official plugins they listed, to use other plugins, you have to build the site yourself. In this post, I would like to discuss their difficulties and how to overcome them.ProblemsThe first problem is, of course, Github does not support custom plugins and they have a valid point to do so - security. Allowing arbitrary code to run on their server is somewhat vulnerable and they don’t want to do so. Hence, I do not expect them to change that anytime soon. However, some plugins are really helpful, in my case, I need plugins to generate category, month archive and tag archive file automatically instead of the painful official way to generate each of them manually as guided when you add any tag or category.">
     <meta itemprop="datePublished" content="June 18, 2018">
     
 
@@ -363,20 +389,20 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>Github page, which uses Jekyll as it static site generator, is a very convinient way to host personal website. However, github only supports some official plugins they <a href="https://pages.github.com/versions/">listed</a>, to use other plugins, you have to build the site yourself. In this post, I would like to discuss about their difficulties and how to overcome them.</p>
+        <p>Github page, which uses Jekyll as it static site generator, is a very convenient way to host a personal website. However, Github only supports some official plugins they <a href="https://pages.github.com/versions/">listed</a>, to use other plugins, you have to build the site yourself. In this post, I would like to discuss their difficulties and how to overcome them.</p>
 <h3 id="problems">Problems</h3>
-<p>The first problem is of course github does not support custom plugins and they have a valid point to do so - sercurity. Allowing arbitrary code to run on their server is somewhat vulnerable and they don’t want to do so. Hence, I do not expect them to change that anytime soon. However, some plugins is really helpful, in my case, I need plugins to generated category, month archive and tag archive file automatically instead of the painful official way to generate each of them manually as <a href="https://jekyllrb.com/docs/posts/#displaying-post-categories-or-tags">guided</a> when you add any tag or category.</p>
+<p>The first problem is, of course, Github does not support custom plugins and they have a valid point to do so - security. Allowing arbitrary code to run on their server is somewhat vulnerable and they don’t want to do so. Hence, I do not expect them to change that anytime soon. However, some plugins are really helpful, in my case, I need plugins to generate category, month archive and tag archive file automatically instead of the painful official way to generate each of them manually as <a href="https://jekyllrb.com/docs/posts/#displaying-post-categories-or-tags">guided</a> when you add any tag or category.</p>
 
-<p>To overcome this this, the only way is to build the website your own and upload the static site to Github. I move all of my site source code to a <code class="highlighter-rouge">src/</code> folder and build the static site to the main directory. However, the second problem comes in when you cannot set the distination folder including the source folder. Because of these tricky thing, I have to use a quite complex solution as bellowing.</p>
+<p>To overcome this, the only way is to build the website your own and upload the static site to Github. I move all of my site source code to a <code class="highlighter-rouge">src/</code> folder and build the static site to the main directory. However, the second problem comes in when you cannot set the destination folder including the source folder. Because of these tricky things, I have to use a quite complex solution as bellowing.</p>
 <h3 id="my-solution">My solution</h3>
 <h4 id="step-1">Step 1.</h4>
-<p>To keep the code clean, I don’t want my development code and generated one to be mixed and also I dont want my commit history to be full of built logs, I create a branch named <code class="highlighter-rouge">develop</code> and set it to the default branch, this branch will how the source code. The master branch will hold the static site. So, now I have two branches like this:</p>
+<p>To keep the code clean, I don’t want my development code and generated one to be mixed and also I don’t want my commit history to be full of built logs, I create a branch named <code class="highlighter-rouge">develop</code> and set it to the default branch, this branch will how the source code. The master branch will hold the static site. So, now I have two branches like this:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>branches:
 -develop (default branch)
 -master (hold static site)
 </code></pre></div></div>
 <h4 id="step-2">Step 2.</h4>
-<p>In the <code class="highlighter-rouge">develop</code> branch, I add a couple of file, the dirrectory look like this:</p>
+<p>In the <code class="highlighter-rouge">develop</code> branch, I add a couple of files, the dirrectory look like this:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-src/  (to hold website jekyll code)
 -build_Site.sh (to build the webiste for development)
 -clean.sh (clean the built site)
@@ -406,7 +432,7 @@ src/npm-debug.log*
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
 git clean <span class="nt">-fdX</span>
 </code></pre></div></div>
-<p>In <code class="highlighter-rouge">build_Site.sh</code>, I build the jekyll site to verify in the development processs:</p>
+<p>In <code class="highlighter-rouge">build_Site.sh</code>, I build the jekyll site to verify in the development process:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
 ./clean.sh
 <span class="nb">cd </span>src
@@ -424,7 +450,7 @@ jekyll serve
 - _config.yml (if .nojekyll does not work, exclude src folder from being built)
 - files generated by Jekyll
 </code></pre></div></div>
-<p>my <code class="highlighter-rouge">build_Site.sh</code> is as bellowing. Other files is as simple as they are described.</p>
+<p>my <code class="highlighter-rouge">build_Site.sh</code> is as bellowing. Other files are as simple as they are described.</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
 <span class="nb">rm</span> <span class="nt">-r</span> src
 git checkout develop src/
@@ -514,6 +540,16 @@ rsync <span class="nt">-av</span> <span class="nt">--delete</span> <span class="
 
 
       
+  <nav class="pagination">
+    
+      <a href="#" class="pagination--pager disabled">Previous</a>
+    
+    
+      <a href="/2018/06/Notes-on-class-constructor/" class="pagination--pager" title="Notes on C++ class constructor and destructor
+">Next</a>
+    
+  </nav>
+
     </div>
 
     
@@ -534,7 +570,7 @@ rsync <span class="nt">-av</span> <span class="nt">--delete</span> <span class="
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/2018/06/custom-plugins-in-github-pages/" rel="permalink">Jekyll custom plugins in Github page
+        <a href="/2018/06/Notes-on-class-constructor/" rel="permalink">Notes on C++ class constructor and destructor
 </a>
       
     </h2>
@@ -544,16 +580,19 @@ rsync <span class="nt">-av</span> <span class="nt">--delete</span> <span class="
 
 
 
-  2 minute read
+  5 minute read
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">Github page, which uses Jekyll as it static site generator, is a very convinient way to host personal website. However, github only supports some official plugins they listed, to use other plugins,...</p>
+    <p class="archive__item-excerpt" itemprop="description">In this posts, I will list some notes that I think they worth to be reminded when mentioning about classes’ declaration, constructor, and destructor.
+
+</p>
   </article>
 </div>
 
         
       </div>
     </div>
+  
   
 </div>
 
