@@ -393,7 +393,17 @@
     
     <p class="archive__item-excerpt" itemprop="description">In this posts, I will list some notes that I think they worth to be reminded when mentioning about classes’ declaration, constructor, and destructor.
 
-</p>
+1. In-class member function is inline function
+If you define a method member inside the class declaration such as
+class People {
+	string first_name() {return _fname;}
+    string last_name();
+}
+string People::last_name {return _lname;}
+
+Then first_name() function will be an inline function by default while the function last_name() is not. Remember the good and the bad of an inline function. On the good side, an inline function can remove the overhead of the function calling mechanism, thus, improves the performance. However, it also increases the code size, leads to increasing the percentage of the cache miss and reduce the performance as well. Therefore, only define a function inside its class definition if the function is small.
+
+2. De...</p>
   </article>
 </div>
 

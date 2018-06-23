@@ -464,8 +464,8 @@
 
 <h5 id="5-if-a-method-does-not-need-to-modify-data-declare-it-as-const-function">5. If a method does not need to modify data, declare it as const function</h5>
 <p>A const function cannot modify any data in the class, so this is a basic rule to ensure your method does not do anything unexpected. It is important if you work in a large team.</p>
-<h5 id="6-if-a-class-has-a-virtual-function-it-needs-a-virtual-destructor">6. If a class has a virtual function, it needs a virtual destructor</h5>
-<p>This code ensures the case when a Derived class object is referred by a pointer of its Base class, if you want to delete the object, it actually calls the destructor of the Derived class. Without the virtual declaration, only the destructor of Base class could be called and it may leak the resources.</p>
+<h5 id="6--if-a-class-has-a-virtual-function-it-needs-a-virtual-destructor">6.  If a class has a virtual function, it needs a virtual destructor</h5>
+<p>This code ensures the case when a Derived class’ object is referred by a pointer of its Base class, the destructor of the Derived class will be called. Without the virtual declaration, it may only call the destructor of Base class  and the resources may be leaked.</p>
 
 <h5 id="7-if-you-have-an-initializer-list-constructor-remember-when-it-will-be-called">7. If you have an initializer-List Constructor, remember when it will be called</h5>
 <p>If you define a container, you should have a constructor that accepts <code class="highlighter-rouge">initializer_list</code>. That way you can initialize your class with a list of value just like a vector:</p>
