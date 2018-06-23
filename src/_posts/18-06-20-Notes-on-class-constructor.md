@@ -84,7 +84,7 @@ They look the same, but there are reasons you should prefer the initialization o
 
 ##### 5. If a method does not need to modify data, declare it as const function
 A const function cannot modify any data in the class, so this is a basic rule to ensure your method does not do anything unexpected. It is important if you work in a large team.
-##### 6. If a class is a Base class or has a virtual function, it needs a virtual destructor
+##### 6.  If a class has a virtual function, it needs a virtual destructor
 This code ensures the case when a Derived class' object is referred by a pointer of its Base class, the destructor of the Derived class will be called. Without the virtual declaration, it may only call the destructor of Base class  and the resources may be leaked.
 
 ##### 7. If you have an initializer-List Constructor, remember when it will be called
