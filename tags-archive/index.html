@@ -286,6 +286,14 @@
           
             <li class="site-month-item">
               <span class="site-month-text">
+                <a href="/2018/07/">
+                2018 Jul
+                </a>
+              </span>
+            </li>
+          
+            <li class="site-month-item">
+              <span class="site-month-text">
                 <a href="/2018/06/">
                 2018 Jun
                 </a>
@@ -308,8 +316,8 @@
             <li class="site-tag-item">
               <span class="site-tag-text btn btn-tag">
                 <a href="/tags-archive/c++/"
-                style="font-size: 84%">
-                C++ (1)
+                style="font-size: 88%">
+                C++ (2)
                 </a>
               </span>
             </li>
@@ -319,6 +327,15 @@
                 <a href="/tags-archive/github/"
                 style="font-size: 84%">
                 github (1)
+                </a>
+              </span>
+            </li>
+            
+            <li class="site-tag-item">
+              <span class="site-tag-text btn btn-tag">
+                <a href="/tags-archive/heap/"
+                style="font-size: 84%">
+                heap (1)
                 </a>
               </span>
             </li>
@@ -373,6 +390,26 @@
   
     
       
+    
+      
+    
+      
+    
+      
+        <li>
+          <a href="#c">
+            <strong>C++</strong> <span class="taxonomy__count">2</span>
+          </a>
+        </li>
+      
+    
+      
+    
+      
+    
+  
+    
+      
         <li>
           <a href="#jekyll">
             <strong>jekyll</strong> <span class="taxonomy__count">1</span>
@@ -397,17 +434,19 @@
       
     
       
+    
+      
         <li>
-          <a href="#c">
-            <strong>C++</strong> <span class="taxonomy__count">1</span>
+          <a href="#initialization">
+            <strong>initialization</strong> <span class="taxonomy__count">1</span>
           </a>
         </li>
       
     
       
         <li>
-          <a href="#initialization">
-            <strong>initialization</strong> <span class="taxonomy__count">1</span>
+          <a href="#heap">
+            <strong>heap</strong> <span class="taxonomy__count">1</span>
           </a>
         </li>
       
@@ -418,6 +457,99 @@
 
 
 
+
+  
+    
+  
+    
+  
+    
+  
+    
+      <section id="c" class="taxonomy__section">
+        <h2 class="archive__subtitle">C++</h2>
+        <div class="entries-list">
+          
+            
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2018/07/using-heap-in-C++/" rel="permalink">Using heap is C++
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Heap is a very important and widely used in any programing language. Unlike queue and stack, there are no dedicated class for heap in C++. However, there are some functions that let you work with heap in C++. This post will discuss about these functions and how should we use them.
+
+1. make_heap()
+template &lt;class RandomAccessIterator, class Compare&gt;
+  void make_heap (RandomAccessIterator first, RandomAccessIterator last,
+                  Compare comp );
+
+A heap in C++ is a max-heap by default, the default comparator is operator&lt;, if you want a min_heap change the comp arguments to something like std::greater&lt;int&gt;().the eleme...</p>
+  </article>
+</div>
+
+          
+            
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2018/06/Notes-on-class-constructor/" rel="permalink">Notes on C++ class constructor and destructor
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">In this posts, I will list some notes that I think they worth to be reminded when mentioning about classes’ declaration, constructor, and destructor.
+
+1. In-class member function is inline function
+If you define a method member inside the class declaration such as
+class People {
+	string first_name() {return _fname;}
+    string last_name();
+}
+string People::last_name {return _lname;}
+
+Then first_name() function will be an inline function by default while the function last_name() is not. Remember the good and the bad of an inline function. On the good side, an inline function can remove the overhead of the function calling mechanism, thus, i...</p>
+  </article>
+</div>
+
+          
+        </div>
+        <a href="#page-title" class="back-to-top">Back to top &uarr;</a>
+      </section>
+    
+  
+    
+  
+    
+  
 
   
     
@@ -538,8 +670,10 @@ The first problem is, of course, Github does not support custom plugins and they
     
   
     
-      <section id="c" class="taxonomy__section">
-        <h2 class="archive__subtitle">C++</h2>
+  
+    
+      <section id="initialization" class="taxonomy__section">
+        <h2 class="archive__subtitle">initialization</h2>
         <div class="entries-list">
           
             
@@ -585,8 +719,8 @@ Then first_name() function will be an inline function by default while the funct
     
   
     
-      <section id="initialization" class="taxonomy__section">
-        <h2 class="archive__subtitle">initialization</h2>
+      <section id="heap" class="taxonomy__section">
+        <h2 class="archive__subtitle">heap</h2>
         <div class="entries-list">
           
             
@@ -598,7 +732,7 @@ Then first_name() function will be an inline function by default while the funct
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/2018/06/Notes-on-class-constructor/" rel="permalink">Notes on C++ class constructor and destructor
+        <a href="/2018/07/using-heap-in-C++/" rel="permalink">Using heap is C++
 </a>
       
     </h2>
@@ -608,20 +742,17 @@ Then first_name() function will be an inline function by default while the funct
 
 
 
-  5 minute read
+  2 minute read
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">In this posts, I will list some notes that I think they worth to be reminded when mentioning about classes’ declaration, constructor, and destructor.
+    <p class="archive__item-excerpt" itemprop="description">Heap is a very important and widely used in any programing language. Unlike queue and stack, there are no dedicated class for heap in C++. However, there are some functions that let you work with heap in C++. This post will discuss about these functions and how should we use them.
 
-1. In-class member function is inline function
-If you define a method member inside the class declaration such as
-class People {
-	string first_name() {return _fname;}
-    string last_name();
-}
-string People::last_name {return _lname;}
+1. make_heap()
+template &lt;class RandomAccessIterator, class Compare&gt;
+  void make_heap (RandomAccessIterator first, RandomAccessIterator last,
+                  Compare comp );
 
-Then first_name() function will be an inline function by default while the function last_name() is not. Remember the good and the bad of an inline function. On the good side, an inline function can remove the overhead of the function calling mechanism, thus, i...</p>
+A heap in C++ is a max-heap by default, the default comparator is operator&lt;, if you want a min_heap change the comp arguments to something like std::greater&lt;int&gt;().the eleme...</p>
   </article>
 </div>
 

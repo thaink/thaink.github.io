@@ -1,0 +1,658 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.11.2 by Michael Rose
+  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Using heap is C++ - Coding&amp;Hobbies</title>
+<meta name="description" content="Heap is a very important and widely used in any programing language. Unlike queue and stack, there are no dedicated class for heap in C++. However, there are some functions that let you work with heap in C++. This post will discuss about these functions and how should we use them.1. make_heap()template &lt;class RandomAccessIterator, class Compare&gt;  void make_heap (RandomAccessIterator first, RandomAccessIterator last,                  Compare comp );A heap in C++ is a max-heap by default, the default comparator is operator&lt;, if you want a min_heap change the comp arguments to something like std::greater&lt;int&gt;().the element with the highest order is always pointed by first. It can be retrieved by the function front(). the range is [first,last), first and last in must be random access iterators so vector is the best bet. The value type should be valid to the swap function, means it should be move-constructible and move-assignable.This function will take O(N) where N is the number of elements.2. push_heap()template &lt;class RandomAccessIterator, class Compare&gt;  void push_heap (RandomAccessIterator first, RandomAccessIterator last,                   Compare comp);Given a heap in the range [first,last-1), this function extends the range considered a heap to [first,last) by placing the value in (last-1) into its corresponding location within it. This function will take O(log(N)).3. pop_heap()template &lt;class RandomAccessIterator, class Compare&gt;  void pop_heap (RandomAccessIterator first, RandomAccessIterator last,                 Compare comp);The element with the highest value is moved from first to (last-1) (which now is out of the heap), the other elements are reorganized in such a way that the range [first,last-1) preserves the properties of a heap. If the previous heap is [begin(), end()), after this function its not true any more. So we need a variable to keep track of the end of the heap. The complexity of this function is O(log(N)).4. sort_heap()template &lt;class RandomAccessIterator, class Compare&gt;  void sort_heap (RandomAccessIterator first, RandomAccessIterator last,                  Compare comp);Sorts the elements in the heap range [first,last) into ascending order. The range loses its properties as a heap. This is sort heap, and it take  N*log(N).5. is_heap() and is_heap_until()template&lt; class RandomIt, class Compare &gt;constexpr bool is_heap( RandomIt first, RandomIt last, Compare comp );template&lt; class RandomIt, class Compare &gt;constexpr RandomIt is_heap_until( RandomIt first, RandomIt last, Compare comp );is_heap check if the range is a heap or not and return a bool value. While is_heap_until return finds the largest range [first, last) beginning at first which is a heap. These to function took O(N).DiscussionAs we can see, techniques to manage a heap are complex and prone to errors since we have to keep track of the heap’s base representation and variables. May be this is because it is inherited from older version of C++. Vector should be used as the base representation and a variable should be define to keep track of the ending of the heap.">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Coding&Hobbies">
+<meta property="og:title" content="Using heap is C++">
+<meta property="og:url" content="https://thaink.github.io/2018/07/using-heap-in-C++/">
+
+
+  <meta property="og:description" content="Heap is a very important and widely used in any programing language. Unlike queue and stack, there are no dedicated class for heap in C++. However, there are some functions that let you work with heap in C++. This post will discuss about these functions and how should we use them.1. make_heap()template &lt;class RandomAccessIterator, class Compare&gt;  void make_heap (RandomAccessIterator first, RandomAccessIterator last,                  Compare comp );A heap in C++ is a max-heap by default, the default comparator is operator&lt;, if you want a min_heap change the comp arguments to something like std::greater&lt;int&gt;().the element with the highest order is always pointed by first. It can be retrieved by the function front(). the range is [first,last), first and last in must be random access iterators so vector is the best bet. The value type should be valid to the swap function, means it should be move-constructible and move-assignable.This function will take O(N) where N is the number of elements.2. push_heap()template &lt;class RandomAccessIterator, class Compare&gt;  void push_heap (RandomAccessIterator first, RandomAccessIterator last,                   Compare comp);Given a heap in the range [first,last-1), this function extends the range considered a heap to [first,last) by placing the value in (last-1) into its corresponding location within it. This function will take O(log(N)).3. pop_heap()template &lt;class RandomAccessIterator, class Compare&gt;  void pop_heap (RandomAccessIterator first, RandomAccessIterator last,                 Compare comp);The element with the highest value is moved from first to (last-1) (which now is out of the heap), the other elements are reorganized in such a way that the range [first,last-1) preserves the properties of a heap. If the previous heap is [begin(), end()), after this function its not true any more. So we need a variable to keep track of the end of the heap. The complexity of this function is O(log(N)).4. sort_heap()template &lt;class RandomAccessIterator, class Compare&gt;  void sort_heap (RandomAccessIterator first, RandomAccessIterator last,                  Compare comp);Sorts the elements in the heap range [first,last) into ascending order. The range loses its properties as a heap. This is sort heap, and it take  N*log(N).5. is_heap() and is_heap_until()template&lt; class RandomIt, class Compare &gt;constexpr bool is_heap( RandomIt first, RandomIt last, Compare comp );template&lt; class RandomIt, class Compare &gt;constexpr RandomIt is_heap_until( RandomIt first, RandomIt last, Compare comp );is_heap check if the range is a heap or not and return a bool value. While is_heap_until return finds the largest range [first, last) beginning at first which is a heap. These to function took O(N).DiscussionAs we can see, techniques to manage a heap are complex and prone to errors since we have to keep track of the heap’s base representation and variables. May be this is because it is inherited from older version of C++. Vector should be used as the base representation and a variable should be define to keep track of the ending of the heap.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2018-07-11T16:12:06+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://thaink.github.io/2018/07/using-heap-in-C++/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Thai Nguyen",
+      "url": "https://thaink.github.io",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Coding&Hobbies Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/">Coding&Hobbies</a>
+        <ul class="visible-links">
+          
+        </ul>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Thai K. Nguyen</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        Software Engineer. Interested in high-performance, classic and elegant coding. I am a minimalist and techno-optimist.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Seoul, KR</span>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/thaink" itemprop="sameAs">
+            <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://instagram.com/khthainguyen" itemprop="sameAs">
+            <i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/thaink" itemprop="sameAs">
+            <i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  <nav class="nav__list">
+  <ul class="nav__items">
+      <li>
+          <span class="nav__sub-title">Categories</span>
+        <ul>
+          
+          
+            <li class="site-month-item">
+              <span class="site-month-text">
+                <a href="/categories-archive/c++/">
+                C++
+                </a>
+              </span>
+            </li>
+          
+            <li class="site-month-item">
+              <span class="site-month-text">
+                <a href="/categories-archive/tips-and-tricks/">
+                Tips and tricks
+                </a>
+              </span>
+            </li>
+          
+        </ul>
+      </li>
+  </ul>
+</nav>
+
+
+  <nav class="nav__list">
+  <ul class="nav__items">
+      <li>
+          <span class="nav__sub-title">Archive</span>
+        <ul>
+          
+          
+            <li class="site-month-item">
+              <span class="site-month-text">
+                <a href="/2018/07/">
+                2018 Jul
+                </a>
+              </span>
+            </li>
+          
+            <li class="site-month-item">
+              <span class="site-month-text">
+                <a href="/2018/06/">
+                2018 Jun
+                </a>
+              </span>
+            </li>
+          
+        </ul>
+      </li>
+  </ul>
+</nav>
+
+
+  <nav class="nav__list">
+  <ul class="nav__items">
+      <li>
+          <span class="nav__sub-title">Tags</span>
+        <ul>
+          
+            
+            <li class="site-tag-item">
+              <span class="site-tag-text btn btn-tag">
+                <a href="/tags-archive/c++/"
+                style="font-size: 88%">
+                C++ (2)
+                </a>
+              </span>
+            </li>
+            
+            <li class="site-tag-item">
+              <span class="site-tag-text btn btn-tag">
+                <a href="/tags-archive/github/"
+                style="font-size: 84%">
+                github (1)
+                </a>
+              </span>
+            </li>
+            
+            <li class="site-tag-item">
+              <span class="site-tag-text btn btn-tag">
+                <a href="/tags-archive/heap/"
+                style="font-size: 84%">
+                heap (1)
+                </a>
+              </span>
+            </li>
+            
+            <li class="site-tag-item">
+              <span class="site-tag-text btn btn-tag">
+                <a href="/tags-archive/initialization/"
+                style="font-size: 84%">
+                initialization (1)
+                </a>
+              </span>
+            </li>
+            
+            <li class="site-tag-item">
+              <span class="site-tag-text btn btn-tag">
+                <a href="/tags-archive/jekyll/"
+                style="font-size: 84%">
+                jekyll (1)
+                </a>
+              </span>
+            </li>
+            
+            <li class="site-tag-item">
+              <span class="site-tag-text btn btn-tag">
+                <a href="/tags-archive/website/"
+                style="font-size: 84%">
+                website (1)
+                </a>
+              </span>
+            </li>
+            
+        </ul>
+      </li>
+  </ul>
+</nav>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Using heap is C++">
+    <meta itemprop="description" content="Heap is a very important and widely used in any programing language. Unlike queue and stack, there are no dedicated class for heap in C++. However, there are some functions that let you work with heap in C++. This post will discuss about these functions and how should we use them.1. make_heap()template &lt;class RandomAccessIterator, class Compare&gt;  void make_heap (RandomAccessIterator first, RandomAccessIterator last,                  Compare comp );A heap in C++ is a max-heap by default, the default comparator is operator&lt;, if you want a min_heap change the comp arguments to something like std::greater&lt;int&gt;().the element with the highest order is always pointed by first. It can be retrieved by the function front(). the range is [first,last), first and last in must be random access iterators so vector is the best bet. The value type should be valid to the swap function, means it should be move-constructible and move-assignable.This function will take O(N) where N is the number of elements.2. push_heap()template &lt;class RandomAccessIterator, class Compare&gt;  void push_heap (RandomAccessIterator first, RandomAccessIterator last,                   Compare comp);Given a heap in the range [first,last-1), this function extends the range considered a heap to [first,last) by placing the value in (last-1) into its corresponding location within it. This function will take O(log(N)).3. pop_heap()template &lt;class RandomAccessIterator, class Compare&gt;  void pop_heap (RandomAccessIterator first, RandomAccessIterator last,                 Compare comp);The element with the highest value is moved from first to (last-1) (which now is out of the heap), the other elements are reorganized in such a way that the range [first,last-1) preserves the properties of a heap. If the previous heap is [begin(), end()), after this function its not true any more. So we need a variable to keep track of the end of the heap. The complexity of this function is O(log(N)).4. sort_heap()template &lt;class RandomAccessIterator, class Compare&gt;  void sort_heap (RandomAccessIterator first, RandomAccessIterator last,                  Compare comp);Sorts the elements in the heap range [first,last) into ascending order. The range loses its properties as a heap. This is sort heap, and it take  N*log(N).5. is_heap() and is_heap_until()template&lt; class RandomIt, class Compare &gt;constexpr bool is_heap( RandomIt first, RandomIt last, Compare comp );template&lt; class RandomIt, class Compare &gt;constexpr RandomIt is_heap_until( RandomIt first, RandomIt last, Compare comp );is_heap check if the range is a heap or not and return a bool value. While is_heap_until return finds the largest range [first, last) beginning at first which is a heap. These to function took O(N).DiscussionAs we can see, techniques to manage a heap are complex and prone to errors since we have to keep track of the heap’s base representation and variables. May be this is because it is inherited from older version of C++. Vector should be used as the base representation and a variable should be define to keep track of the ending of the heap.">
+    <meta itemprop="datePublished" content="July 11, 2018">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Using heap is C++
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>Heap is a very important and widely used in any programing language. Unlike queue and stack, there are no dedicated class for heap in C++. However, there are some functions that let you work with heap in C++. This post will discuss about these functions and how should we use them.</p>
+
+<h5 id="1-make_heap">1. make_heap()</h5>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">RandomAccessIterator</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Compare</span><span class="o">&gt;</span>
+  <span class="kt">void</span> <span class="n">make_heap</span> <span class="p">(</span><span class="n">RandomAccessIterator</span> <span class="n">first</span><span class="p">,</span> <span class="n">RandomAccessIterator</span> <span class="n">last</span><span class="p">,</span>
+                  <span class="n">Compare</span> <span class="n">comp</span> <span class="p">);</span>
+</code></pre></div></div>
+<p>A heap in C++ is a max-heap by default, the default comparator is <code class="highlighter-rouge">operator&lt;</code>, if you want a min_heap change the comp arguments to something like <code class="highlighter-rouge">std::greater&lt;int&gt;()</code>.the element with the highest order is always pointed by first. It can be retrieved by the function <code class="highlighter-rouge">front()</code>. the range is [first,last), first and last in must be random access iterators so vector is the best bet. The value type should be valid to the swap function, means it should be move-constructible and move-assignable.
+This function will take O(N) where N is the number of elements.</p>
+
+<h5 id="2-push_heap">2. push_heap()</h5>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">RandomAccessIterator</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Compare</span><span class="o">&gt;</span>
+  <span class="kt">void</span> <span class="n">push_heap</span> <span class="p">(</span><span class="n">RandomAccessIterator</span> <span class="n">first</span><span class="p">,</span> <span class="n">RandomAccessIterator</span> <span class="n">last</span><span class="p">,</span>
+                   <span class="n">Compare</span> <span class="n">comp</span><span class="p">);</span>
+</code></pre></div></div>
+<p>Given a heap in the range [first,last-1), this function extends the range considered a heap to [first,last) by placing the value in (last-1) into its corresponding location within it. This function will take O(log(N)).</p>
+
+<h5 id="3-pop_heap">3. pop_heap()</h5>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">RandomAccessIterator</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Compare</span><span class="o">&gt;</span>
+  <span class="kt">void</span> <span class="n">pop_heap</span> <span class="p">(</span><span class="n">RandomAccessIterator</span> <span class="n">first</span><span class="p">,</span> <span class="n">RandomAccessIterator</span> <span class="n">last</span><span class="p">,</span>
+                 <span class="n">Compare</span> <span class="n">comp</span><span class="p">);</span>
+</code></pre></div></div>
+<p>The element with the highest value is moved from first to (last-1) (which now is out of the heap), the other elements are reorganized in such a way that the range [first,last-1) preserves the properties of a heap. If the previous heap is [begin(), end()), after this function its not true any more. So we need a variable to keep track of the end of the heap. The complexity of this function is O(log(N)).</p>
+
+<h5 id="4-sort_heap">4. sort_heap()</h5>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">RandomAccessIterator</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Compare</span><span class="o">&gt;</span>
+  <span class="kt">void</span> <span class="n">sort_heap</span> <span class="p">(</span><span class="n">RandomAccessIterator</span> <span class="n">first</span><span class="p">,</span> <span class="n">RandomAccessIterator</span> <span class="n">last</span><span class="p">,</span>
+                  <span class="n">Compare</span> <span class="n">comp</span><span class="p">);</span>
+</code></pre></div></div>
+<p>Sorts the elements in the heap range [first,last) into ascending order. The range loses its properties as a heap. This is sort heap, and it take  N*log(N).</p>
+<h5 id="5-is_heap-and-is_heap_until">5. is_heap() and is_heap_until()</h5>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">template</span><span class="o">&lt;</span> <span class="k">class</span> <span class="nc">RandomIt</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Compare</span> <span class="o">&gt;</span>
+<span class="k">constexpr</span> <span class="kt">bool</span> <span class="n">is_heap</span><span class="p">(</span> <span class="n">RandomIt</span> <span class="n">first</span><span class="p">,</span> <span class="n">RandomIt</span> <span class="n">last</span><span class="p">,</span> <span class="n">Compare</span> <span class="n">comp</span> <span class="p">);</span>
+
+<span class="k">template</span><span class="o">&lt;</span> <span class="k">class</span> <span class="nc">RandomIt</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Compare</span> <span class="o">&gt;</span>
+<span class="k">constexpr</span> <span class="n">RandomIt</span> <span class="n">is_heap_until</span><span class="p">(</span> <span class="n">RandomIt</span> <span class="n">first</span><span class="p">,</span> <span class="n">RandomIt</span> <span class="n">last</span><span class="p">,</span> <span class="n">Compare</span> <span class="n">comp</span> <span class="p">);</span>
+</code></pre></div></div>
+<p><code class="highlighter-rouge">is_heap</code> check if the range is a heap or not and return a bool value. While <code class="highlighter-rouge">is_heap_until</code> return finds the largest range [first, last) beginning at first which is a heap. These to function took O(N).</p>
+
+<h5 id="discussion">Discussion</h5>
+<p>As we can see, techniques to manage a heap are complex and prone to errors since we have to keep track of the heap’s base representation and variables. May be this is because it is inherited from older version of C++. Vector should be used as the base representation and a variable should be define to keep track of the ending of the heap.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags-archive/c++" class="page__taxonomy-item" rel="tag">C++</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags-archive/heap" class="page__taxonomy-item" rel="tag">heap</a>
+    
+    </span>
+  </p>
+
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories-archive/c++" class="page__taxonomy-item" rel="tag">C++</a>
+    
+    </span>
+  </p>
+
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-07-11T16:12:06+09:00">July 11, 2018</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Using+heap+is+C%2B%2B%20https%3A%2F%2Fthaink.github.io%2F2018%2F07%2Fusing-heap-in-C%2B%2B%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fthaink.github.io%2F2018%2F07%2Fusing-heap-in-C%2B%2B%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=https%3A%2F%2Fthaink.github.io%2F2018%2F07%2Fusing-heap-in-C%2B%2B%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fthaink.github.io%2F2018%2F07%2Fusing-heap-in-C%2B%2B%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/2018/06/Notes-on-class-constructor/" class="pagination--pager" title="Notes on C++ class constructor and destructor
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2018/06/Notes-on-class-constructor/" rel="permalink">Notes on C++ class constructor and destructor
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">In this posts, I will list some notes that I think they worth to be reminded when mentioning about classes’ declaration, constructor, and destructor.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2018/06/custom-plugins-in-github-pages/" rel="permalink">Jekyll custom plugins in Github page
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Github page, which uses Jekyll as it static site generator, is a very convenient way to host a personal website. However, Github only supports some official plugins they listed, to use other plugin...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="https://github.com/thaink"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Thai Nguyen. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+  </body>
+</html>

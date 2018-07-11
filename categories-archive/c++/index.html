@@ -286,6 +286,14 @@
           
             <li class="site-month-item">
               <span class="site-month-text">
+                <a href="/2018/07/">
+                2018 Jul
+                </a>
+              </span>
+            </li>
+          
+            <li class="site-month-item">
+              <span class="site-month-text">
                 <a href="/2018/06/">
                 2018 Jun
                 </a>
@@ -308,8 +316,8 @@
             <li class="site-tag-item">
               <span class="site-tag-text btn btn-tag">
                 <a href="/tags-archive/c++/"
-                style="font-size: 84%">
-                C++ (1)
+                style="font-size: 88%">
+                C++ (2)
                 </a>
               </span>
             </li>
@@ -319,6 +327,15 @@
                 <a href="/tags-archive/github/"
                 style="font-size: 84%">
                 github (1)
+                </a>
+              </span>
+            </li>
+            
+            <li class="site-tag-item">
+              <span class="site-tag-text btn btn-tag">
+                <a href="/tags-archive/heap/"
+                style="font-size: 84%">
+                heap (1)
                 </a>
               </span>
             </li>
@@ -368,6 +385,40 @@
   <section id="c" class="taxonomy__section">
     <h2 class="archive__subtitle"></h2>
     <div class="entries-list">
+      
+        
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2018/07/using-heap-in-C++/" rel="permalink">Using heap is C++
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Heap is a very important and widely used in any programing language. Unlike queue and stack, there are no dedicated class for heap in C++. However, there are some functions that let you work with heap in C++. This post will discuss about these functions and how should we use them.
+
+1. make_heap()
+template &lt;class RandomAccessIterator, class Compare&gt;
+  void make_heap (RandomAccessIterator first, RandomAccessIterator last,
+                  Compare comp );
+
+A heap in C++ is a max-heap by default, the default comparator is operator&lt;, if you want a min_heap change the comp arguments to something like std::greater&lt;int&gt;().the eleme...</p>
+  </article>
+</div>
+
       
         
 
